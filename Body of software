@@ -1,0 +1,111 @@
+import tkinter as tk
+from tkinter import messagebox
+import webbrowser
+def show():
+    a1 = vari1.get()
+    a2 = vari2.get()
+    a3 = vari3.get()
+    a4 = vari4.get()
+    if a1 == "0-15 minutes" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "all types":
+        display = "https://www.youtube.com/watch?v=pGP5JK707aM" #2
+    elif a1 == "0-15 minutes" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "all types":
+        display = "https://www.youtube.com/watch?v=gFeEUq2624Q" #3
+    elif a1 == "0-15 minutes" and a2 == "anaerobic fitness" and a3 == "Pamela Reif" and a4 == "all types":
+        display = "https://www.youtube.com/watch?v=p-uUnrCdhR8" # 7
+    elif a1 == "15-30 minutes" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "all types":
+        display = "https://www.youtube.com/watch?v=hjDhA0TzpwI&t=838s" #10
+    elif a1 == "15-30 minutes" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "all types":
+        display = "https://www.youtube.com/watch?v=ILUZz0nGEBI"  #11
+    elif a1 == "30 minutes and more" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "all types":
+        display = "https://www.youtube.com/watch?v=jZO7fKlY6V8" #18
+    elif a1 == "0-15 minutes" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "Beginner":
+        display = "https: // www.youtube.com / watch?v = NNjkhGKVrjY"   #26
+    elif a1 == "0-15 minutes" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "Beginner":
+        display = "https://www.youtube.com/watch?v=06cwQlikBEA" #27
+    elif a1 == "0-15 minutes" and a2 == "anaerobic fitness" and a3 == "Pamela Reif" and a4 == "Beginner":
+        display = "https://www.youtube.com/watch?v=1f8yoFFdkcY"     #31
+    elif a1 == "15-30 minutes" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "Beginner":
+        display = "https://www.youtube.com/watch?v=ncz7Tjoz4Lg" #34
+    elif a1 == "15-30 minutes" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "Beginner":
+        display = "https://www.youtube.com/watch?v=NmCXy7oMsOs" #35
+    elif a1 == "15-30 minutes" and a2 == "anaerobic fitness" and a3 == "Pamela Reif" and a4 == "Beginner":
+        display = "https://www.youtube.com/watch?v=UItWltVZZmE&t=1s"    #39
+    elif a1 == "30 minutes and more" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "Beginner":
+        display = "https://www.youtube.com/watch?v=J4Ce-okhwvo&t=107s" #42
+    elif a1 == "0-15 minutes" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display =  "https://www.youtube.com/watch?v=qzwUIQvyd9M"    # 50
+    elif a1 == "0-15 minutes" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display =   "https://www.youtube.com/watch?v=zr08J6wB53Y"   # 51
+    elif a1 == "15-30 minutes" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display =   "https://www.youtube.com/watch?v=DmATiz7Jr-w"   #58
+    elif a1 == "15-30 minutes" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display =   "https://www.youtube.com/watch?v=1skBf6h2ksI"   #59
+    elif a1 == "15-30 minutes" and a2 == "anaerobic fitness" and a3 == "Pamela Reif" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display = "https://www.youtube.com/watch?v=UBMk30rjy0o&t=95s"   # 63
+    elif a1 == "30 minutes and more" and a2 == "aerobic fitness" and a3 == "Emma Fitness" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display =  "https://www.youtube.com/watch?v=pul9STzK0gU"    # 66
+    elif a1 == "30 minutes and more" and a2 == "aerobic fitness" and a3 == "Pamela Reif" and a4 == "Basic Fitness(Have some basic fitness skills)":
+        display =   "https://www.youtube.com/watch?v=VddSvgcmBz0"   # 67
+    else:
+        display ="No result found"
+
+    if display != "No result found":
+        link.config(text = display)
+        link.bind("<Button-1>", lambda e: callback(display))
+    else:
+        link.config(text="https://www.youtube.com/")
+        link.bind("<Button-1>", lambda e: callback("https://www.youtube.com/"))
+
+    input_txt.delete('1.0', tk.END)
+    input_txt.insert(tk.INSERT, display)
+    #messagebox.showinfo("Result", vari1.get())
+def callback(url):
+   webbrowser.open_new_tab(url)
+
+window = tk.Tk()
+
+window.title("YouTube Video Recommandation")
+
+window.geometry('500x350')
+
+
+opt1 = ["0-15 minutes", "15-30 minutes", "30 minutes and more"]
+vari1 = tk.StringVar()
+vari1.set(opt1[0]) # default value
+dp1 = tk.OptionMenu(window, vari1, *opt1)
+dp1.pack()
+
+opt2 = ["aerobic fitness", "anaerobic fitness"]
+vari2 = tk.StringVar()
+vari2.set(opt2[0]) # default value
+dp2 = tk.OptionMenu(window, vari2,  *opt2)
+dp2.pack()
+
+opt3 = ["Emma Fitness", "Pamela Reif", "The fitness Marshall", "Walk at home"]
+vari3 = tk.StringVar()
+vari3.set(opt3[0]) # default value
+dp3 = tk.OptionMenu(window, vari3, *opt3)
+dp3.pack()
+
+opt4 = ["all types", "Beginner", "Basic Fitness(Have some basic fitness skills)"]
+vari4 = tk.StringVar()
+vari4.set(opt4[0]) # default value
+dp4 = tk.OptionMenu(window, vari4, *opt4)
+dp4.pack()
+
+
+
+label = tk.Label( window , text = "Click search botton to get result" )
+button = tk.Button( window , text = "Search", command= show ).pack()
+label.pack()
+
+input_txt = tk.Text(window, height = 5,   width = 100, background="gray71",foreground="#fff",font= ('Sans Serif', 13, 'italic bold'))
+input_txt.pack()
+
+
+
+link = tk.Label(window, text="",font=('Helveticabold', 15), fg="blue", cursor="hand2")
+link.pack()
+
+
+window.mainloop()
